@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sign Up{% endblock title %}</title>
+</head>
+<body>
+    {% block content %}
+        <div class="container d-flex align-items-center flex-column">
+        <h1>--------------------------------</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button style="height: 60px; width: 300px" class="btn btn-success" type="submit">Sign Up</button>
+            </form>
+        <h1>--------------------------------</h1>
+        </div>
+    {% endblock content %}
+</body>
+</html>
