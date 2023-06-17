@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Logout{% endblock title %}</title>
+</head>
+<body>
+
+{% block content %}
+    <div class="container d-flex align-items-center flex-column">
+    <h1>--------------------------------</h1>
+<h1>SignOut</h1>
+
+<p>Are you sure you want to sign out?</p>
+
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button type="submit" class="btn btn-danger" style="height: 60px; width: 300px">SignOut</button>
+</form>
+    <h1>--------------------------------</h1>
+    </div>
+
+
+{% endblock content %}
+</body>
+</html>

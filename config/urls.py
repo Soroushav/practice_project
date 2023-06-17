@@ -20,6 +20,7 @@ from django.contrib.auth import urls as reg_url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('account.urls')),
+    path('', include('profile.urls')),
     path('reg/', include(reg_url)),
+    path('customreg/', include('allauth.urls'))
 ]
