@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'braces',
 
     'profile',
 ]
@@ -151,6 +152,13 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = 'soroushav85@gmail.com'
+EMAIL_HOST_PASSWORD = 'uxlmacderjbqoihr'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'microsoft@soroush.com'
 AUTH_USER_MODEL = 'profile.CustomUser'
 
 LOGOUT_REDIRECT_URL = 'home'

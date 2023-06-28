@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Profile Search{% endblock title %}</title>
+</head>
+<body>
+    {% block content %}
+        <div class="container d-flex align-items-center flex-column">
+
+            {% for user in users %}
+                <h1>---------------------------------------</h1>
+                <h2 class="masthead-heading text-uppercase mb-0" text-align="center">username:{{ user.username }}</h2>
+                <li class="masthead-heading text-uppercase mb-0">email:{{ user.email }}</li>
+                <li class="masthead-heading text-uppercase mb-0">age:{{ user.age }}</li>
+                <h1>---------------------------------------</h1>
+            {% endfor %}
+
+
+        </div>
+    {% endblock content %}
+
+</body>
+</html>
