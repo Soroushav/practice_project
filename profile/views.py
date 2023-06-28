@@ -29,9 +29,7 @@ class UserActionMixin:
 
 class CreateUserMixin:
     def form_valid(self, form):
-        username = form.cleaned_data['username']
-        email = form.cleaned_data['email']
-        create_user_sent_email(username, email)
+        form.send_email()
         return super().form_valid(form)
 
 class HomePageView(TemplateView):

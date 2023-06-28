@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from .email import create_user_sent_email
+from .tasks import create_user_sent_email_task
 
 
 class CustomUserCreationForm(forms.ModelForm):
@@ -25,6 +26,11 @@ class CustomUserCreationForm(forms.ModelForm):
         if self.cleaned_data['password'] != self.cleaned_data['password2']:
             raise forms.ValidationError("passwords did not match!", code="invalid")
         return self.cleaned_data['password2']
+
+    def send_email(self):
+        username = self.cleaned_data['username']
+        email = self.cleaned_data['email']
+        create_user_sent_email_task.delay(username, email)
 
     def save(self, commit=True):
         user = super().save(commit=False)
