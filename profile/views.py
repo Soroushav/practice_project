@@ -32,6 +32,7 @@ class CreateUserMixin:
         form.send_email()
         return super().form_valid(form)
 
+
 class HomePageView(TemplateView):
     template_name = 'home.html'
 

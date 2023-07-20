@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'braces',
+    'django_celery_beat',
 
     'profile',
 ]
@@ -134,17 +134,12 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = 'static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 STATICFILES_FINDERS = [
@@ -158,7 +153,7 @@ EMAIL_HOST_USER = 'soroushav85@gmail.com'
 EMAIL_HOST_PASSWORD = 'uxlmacderjbqoihr'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'microsoft@soroush.com'
+DEFAULT_FROM_EMAIL = 'soroushav85@gmail.com'
 AUTH_USER_MODEL = 'profile.CustomUser'
 
 LOGOUT_REDIRECT_URL = 'home'
