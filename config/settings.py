@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_celery_beat',
+    'rest_framework',
 
     'profile',
 ]
@@ -52,6 +53,18 @@ INSTALLED_APPS = [
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_SESSION_REMEMBER = None
 ACCOUNT_FORMS = {'signup': 'profile.forms.CustomUserCreationForm'}
+
+
+#rest_framework configurations
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
 
 
 SITE_ID = 1

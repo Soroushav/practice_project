@@ -8,6 +8,17 @@ from django.contrib import messages
 from .email import create_user_sent_email
 
 
+#rest_framework imports
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated
+from .serializers import UserSerializer
+
+
+CustomUser = get_user_model()
+
+
+#Django View
+
 class UserActionMixin:
 
     @property
@@ -69,3 +80,17 @@ class CreateUserView(UserActionMixin, CreateUserMixin, CreateView):
     success_url = reverse_lazy('home')
     success_msg = "Created"
     error_msg = "User did not created"
+
+
+# Rest API View
+
+class CreateListUserAPI(ListCreateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsAuthenticated,)
+
+class UpdateDeleteUserAPI(RetrieveUpdateDestroyAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsAuthenticated,)
+    lookup_field = int
