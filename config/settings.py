@@ -45,9 +45,19 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'django_celery_beat',
     'rest_framework',
+    'drf_spectacular',
 
     'profile',
 ]
+
+#drf-spectacular configurations 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Demo Project',
+    'DESCRIPTION': 'API for Demo Project',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': True,
+}
+
 
 #allauth-configurations
 ACCOUNT_EMAIL_REQUIRED = True
@@ -63,7 +73,8 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': "drf_spectacular.openapi.AutoSchema",
 }
 
 
